@@ -1,6 +1,6 @@
-# SaaS Pro Application 🚀
+# Invoice Management System 
 
-Welcome to **SaaS Pro**, a fully functional multi-tenant Software as a Service (SaaS) application. This project features a robust Spring Boot backend paired with a highly responsive, premium-styled React frontend.
+Welcome to **Invoice Management System**, a fully functional multi-tenant Software as a Service (SaaS) application. This project features a robust Spring Boot backend paired with a highly responsive, premium-styled React frontend.
 
 ## 🌟 Key Features
 

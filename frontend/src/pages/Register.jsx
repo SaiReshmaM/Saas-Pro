@@ -17,15 +17,16 @@ export default function Register() {
         role,
       });
 
-      if (res.data === "User already exists!") {
-        alert(res.data);
+      if (res.data.message === "User already exists!") {
+        alert(res.data.message);
       } else {
         alert("Registration successful! Please login.");
         navigate("/");
       }
     } catch (err) {
       console.error(err);
-      alert("Registration failed");
+      const errorMsg = err.response?.data?.message || "Registration failed. Check if server is running.";
+      alert(errorMsg);
     }
   };
 

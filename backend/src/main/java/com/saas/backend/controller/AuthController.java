@@ -6,6 +6,9 @@ import com.saas.backend.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.http.ResponseEntity;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Optional;
 
 @RestController
@@ -21,12 +24,14 @@ public class AuthController {
 
     // ✅ REGISTER USER
     @PostMapping("/register")
-    public String register(@RequestBody User user) {
+    public ResponseEntity<Map<String, String>> register(@RequestBody User user) {
 
         Optional<User> existing = userRepository.findByEmail(user.getEmail());
 
+        Map<String, String> response = new HashMap<>();
         if (existing.isPresent()) {
-            return "User already exists!";
+            response.put("message", "User already exists!");
+            return ResponseEntity.badRequest().body(response);
         }
 
         // ✅ FIX 1: Set default role
@@ -34,14 +39,15 @@ public class AuthController {
             user.setRole("USER"); // default
         }
 
-        // ✅ FIX 2: Set tenantId (VERY IMPORTANT for SaaS)
-        if (user.getTenantId() == null) {
-            user.setTenantId(1L); // for now static (later dynamic)
+        try {
+            userRepository.save(user);
+        } catch (Exception e) {
+            response.put("message", "Database Error: " + e.getMessage());
+            return ResponseEntity.status(500).body(response);
         }
 
-        userRepository.save(user);
-
-        return "User registered successfully!";
+        response.put("message", "User registered successfully!");
+        return ResponseEntity.ok(response);
     }
 
     // ✅ LOGIN USER

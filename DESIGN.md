@@ -1,4 +1,4 @@
-# SaaS Pro System Design Document
+# Invoice Management System Design Document
 
 This document outlines the architectural decisions, structural patterns, and security paradigms employed throughout the SaaS Pro application.
 

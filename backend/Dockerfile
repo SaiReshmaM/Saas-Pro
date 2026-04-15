@@ -27,20 +27,14 @@
 # EXPOSE 8080
 # ENTRYPOINT ["java", "-jar", "app.jar"]
 
-
-# Stage 1: Build
 FROM maven:3.8.4-openjdk-17-slim AS build
 
 WORKDIR /app
+
 COPY . .
+
 RUN mvn clean package -DskipTests
-
-# Stage 2: Run
-FROM openjdk:17-jdk-slim
-
-WORKDIR /app
-COPY --from=build /app/target/APP.jar app.jar
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "target/APP.jar"]

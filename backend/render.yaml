@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: saas-project
+    runtime: docker
+    plan: free # Change to starter if you need more resources
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_URL
+        value: "jdbc:h2:file:/data/saas-db;DB_CLOSE_DELAY=-1"
+    disk:
+      name: saas-db-storage
+      mountPath: /data
+      sizeGB: 1

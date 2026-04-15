@@ -19,10 +19,10 @@ public class User {
     private String role;
     private Long tenantId;
 
-    // ✅ Default Constructor
+    //  Default Constructor
     public User() {}
 
-    // ✅ Getters & Setters
+    //  Getters & Setters
 
     public Long getId() {
         return id;

@@ -1,35 +1,3 @@
-// const API = "http://localhost:8080";
-
-// export const login = async (data) => {
-//   const res = await fetch(`${API}/auth/login`, {
-//     method: "POST",
-//     headers: {"Content-Type": "application/json"},
-//     body: JSON.stringify(data)
-//   });
-//   return res.json();
-// };
-
-// export const getCustomers = async (token) => {
-//   const res = await fetch(`${API}/customers`, {
-//     headers: {
-//       "Authorization": "Bearer " + token
-//     }
-//   });
-//   return res.json();
-// };
-
-// export const createCustomer = async (token, data) => {
-//   const res = await fetch(`${API}/customers`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Authorization": "Bearer " + token
-//     },
-//     body: JSON.stringify(data)
-//   });
-//   return res.json();
-// };
-
 import axios from "axios";
 
 const API = axios.create({

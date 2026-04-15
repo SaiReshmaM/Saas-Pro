@@ -17,7 +17,7 @@ export default function Login() {
 
       console.log(res.data); // 🔍 check this in console
 
-      // ✅ store token correctly
+      // store token correctly
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
 

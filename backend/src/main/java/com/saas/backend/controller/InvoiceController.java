@@ -24,7 +24,7 @@ public class InvoiceController {
     @Autowired
     private UserRepository userRepo;
 
-    // ✅ CREATE INVOICE
+    //  CREATE INVOICE
     @PostMapping
     public Invoice create(@RequestBody Invoice invoice) {
 
@@ -40,7 +40,7 @@ public class InvoiceController {
         return repo.save(invoice);
     }
 
-    // ✅ GET ALL INVOICES (Tenant-based)
+    //  GET ALL INVOICES (Tenant-based)
     @GetMapping
     public List<Invoice> getAll() {
 
@@ -50,7 +50,7 @@ public class InvoiceController {
         return repo.findByTenantId(user.getTenantId());
     }
 
-    // 🔒 UPDATE INVOICE (ADMIN only)
+    //  UPDATE INVOICE (ADMIN only)
     @PutMapping("/{id}")
     public Invoice update(@PathVariable Long id, @RequestBody Invoice updated) {
 
@@ -70,7 +70,7 @@ public class InvoiceController {
         return repo.save(existing);
     }
 
-    // 🔒 DELETE INVOICE (ADMIN only)
+    //  DELETE INVOICE (ADMIN only)
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
 
@@ -84,7 +84,7 @@ public class InvoiceController {
         repo.deleteById(id);
     }
 
-    // 🚀 NEW: INVOICE SUMMARY API
+    //  INVOICE SUMMARY API
     @GetMapping("/summary")
     public String summary() {
 

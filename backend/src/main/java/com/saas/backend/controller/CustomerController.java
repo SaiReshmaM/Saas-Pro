@@ -23,7 +23,7 @@ public class CustomerController {
     @Autowired
     private UserRepository userRepo;
 
-    // ✅ COMMON METHOD (reuse logic)
+    
     private User getUserFromRequest(HttpServletRequest request) {
         String email = (String) request.getAttribute("email");
 
@@ -37,7 +37,7 @@ public class CustomerController {
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
-    // ✅ CREATE
+    //  CREATE
     @PostMapping
     public Customer create(@RequestBody Customer customer,
                            HttpServletRequest request) {
@@ -49,7 +49,7 @@ public class CustomerController {
         return repo.save(customer);
     }
 
-    // ✅ READ
+    //  READ
     @GetMapping
     public List<Customer> getAll(HttpServletRequest request) {
 
@@ -58,7 +58,7 @@ public class CustomerController {
         return repo.findByTenantId(user.getTenantId());
     }
 
-    // 🔒 UPDATE (ADMIN only)
+    //  UPDATE (ADMIN only)
     @PutMapping("/{id}")
 public Customer update(@PathVariable Long id,
                        @RequestBody Customer updatedCustomer,
@@ -66,7 +66,7 @@ public Customer update(@PathVariable Long id,
 
     User user = getUserFromRequest(request);
 
-    // ✅ ROLE CHECK
+    //  ROLE CHECK
     if (user.getRole() == null || !user.getRole().equalsIgnoreCase("ADMIN")) {
         throw new RuntimeException("Access Denied: Only ADMIN can update");
     }
@@ -74,12 +74,12 @@ public Customer update(@PathVariable Long id,
     Customer existing = repo.findById(id)
             .orElseThrow(() -> new RuntimeException("Customer not found"));
 
-    // ✅ TENANT CHECK (VERY IMPORTANT)
+    //  TENANT CHECK (VERY IMPORTANT)
     if (!existing.getTenantId().equals(user.getTenantId())) {
         throw new RuntimeException("Access Denied: Different tenant");
     }
 
-    // ✅ NULL SAFE UPDATE
+    //  NULL SAFE UPDATE
     if (updatedCustomer.getName() != null) {
         existing.setName(updatedCustomer.getName());
     }
@@ -91,7 +91,7 @@ public Customer update(@PathVariable Long id,
     return repo.save(existing);
 }
 
-    // 🔒 DELETE (ADMIN only)
+    //  DELETE (ADMIN only)
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id,
                        HttpServletRequest request) {

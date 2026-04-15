@@ -1,9 +1,5 @@
 # Invoice Management System Design Document
 
-This document outlines the architectural decisions, structural patterns, and security paradigms employed throughout the SaaS Pro application.
-
----
-
 ## 1. High-Level Architecture
 
 The application follows a standard **Client-Server Architecture**, loosely coupled via RESTful APIs.

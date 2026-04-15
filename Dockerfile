@@ -12,7 +12,7 @@ WORKDIR /app
 COPY backend/pom.xml ./backend/
 COPY backend/src ./backend/src
 
-# 🔥 CRITICAL: Copy built frontend directly into Spring Boot static resources folder
+# CRITICAL: Copy built frontend directly into Spring Boot static resources folder
 # This ensures the website is bundled INSIDE the JAR file.
 COPY --from=frontend-build /app/frontend/dist /app/backend/src/main/resources/static/
 

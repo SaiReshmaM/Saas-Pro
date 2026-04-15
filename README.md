@@ -2,7 +2,7 @@
 
 Welcome to **Invoice Management System**, a fully functional multi-tenant Software as a Service (SaaS) application. This project features a robust Spring Boot backend paired with a highly responsive, premium-styled React frontend.
 
-## 🌟 Key Features
+## Key Features
 
 * **Secure Authentication:** JWT-based login and registration system.
 * **Role-Based Access Control (RBAC):** Strict isolation between `ADMIN` and `USER` capabilities.
@@ -11,7 +11,7 @@ Welcome to **Invoice Management System**, a fully functional multi-tenant Softwa
 * **Automated PDF Export:** Native, browser-based invoice PDF generation.
 * **Smart Dashboard:** Dynamic revenue calculation and quick-glance statistics.
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 - **React.js (Vite)**
@@ -27,7 +27,7 @@ Welcome to **Invoice Management System**, a fully functional multi-tenant Softwa
 
 ---
 
-## 🏃‍♂️ Getting Started
+## Getting Started
 
 ### 1. Run the Backend (Spring Boot)
 1. Open your terminal and navigate to the `/backend` directory.
@@ -51,7 +51,7 @@ Welcome to **Invoice Management System**, a fully functional multi-tenant Softwa
 
 ---
 
-## 🔐 User Roles & Permissions
+## User Roles & Permissions
 
 ### `ADMIN` Role
 * **Full Access:** Complete read/write capabilities across the platform.

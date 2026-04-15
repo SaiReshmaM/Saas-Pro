@@ -22,7 +22,7 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // ✅ REGISTER USER
+    //  REGISTER USER
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> register(@RequestBody User user) {
 
@@ -34,7 +34,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        // ✅ FIX 1: Set default role
+        // Set default role
         if (user.getRole() == null) {
             user.setRole("USER"); // default
         }
@@ -50,7 +50,7 @@ public class AuthController {
         return ResponseEntity.ok(response);
     }
 
-    // ✅ LOGIN USER
+    //  LOGIN USER
     @PostMapping("/login")
     public org.springframework.http.ResponseEntity<java.util.Map<String, String>> login(@RequestBody User user) {
 
@@ -61,7 +61,7 @@ public class AuthController {
             throw new RuntimeException("Invalid password");
         }
 
-        // ✅ Generate JWT token
+        //  Generate JWT token
         String token = jwtUtil.generateToken(existing.getEmail());
 
         java.util.Map<String, String> response = new java.util.HashMap<>();

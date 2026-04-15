@@ -43,15 +43,26 @@ export default function Invoices() {
           <p><strong>Status:</strong> ${status}</p>
           <br/>
           <p>Thank you for your business!</p>
+          <script>
+            window.onload = function() {
+              setTimeout(function() {
+                window.print();
+                window.onafterprint = function() {
+                  window.close();
+                };
+              }, 500); // Give it a short delay to render content
+            };
+          </script>
         </body>
       </html>
     `;
     const printWindow = window.open('', '_blank');
-    printWindow.document.write(content);
-    printWindow.document.close();
-    printWindow.focus();
-    printWindow.print();
-    printWindow.close();
+    if (printWindow) {
+      printWindow.document.write(content);
+      printWindow.document.close();
+    } else {
+      alert("Please allow popups to download the PDF");
+    }
   };
 
   useEffect(() => {

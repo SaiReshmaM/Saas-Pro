@@ -28,21 +28,26 @@ import Invoices from "./pages/Invoices";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Layout from "./components/Layout";
+import RequireAuth from "./components/RequireAuth";
+import SessionObserver from "./components/SessionObserver";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <SessionObserver />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
-        {/* Authenticated Routes with Sidebar */}
-        <Route element={<Layout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/invoices" element={<Invoices />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
+        {/* Authenticated Routes protected by RequireAuth */}
+        <Route element={<RequireAuth />}>
+          <Route element={<Layout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/customers" element={<Customers />} />
+            <Route path="/invoices" element={<Invoices />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

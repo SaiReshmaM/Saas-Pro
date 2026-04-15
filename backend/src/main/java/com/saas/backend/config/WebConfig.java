@@ -19,9 +19,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .setViewName("forward:/index.html");
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/static/");
-    }
+    
 }
